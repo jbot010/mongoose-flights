@@ -15,10 +15,9 @@ const flightSchema = new Schema({
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
   },
   flightNo: {
-    flightNo: { type: Number,
+    type: Number,
     min: 10,
     max: 9999,
-    }
   },
   departs: {
     Date: { type: Number,
