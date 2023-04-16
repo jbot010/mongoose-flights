@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema
 	
-//TODO -> 'DEN' default via middleware
 //TODO -> set departs date default to one year from date created
 const flightSchema = new Schema({
   airline: {
@@ -12,7 +11,7 @@ const flightSchema = new Schema({
   },
   airport: {
     type: String,
-    enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
+    enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
   },
   flightNo: {
     type: Number,
@@ -20,13 +19,10 @@ const flightSchema = new Schema({
     max: 9999,
   },
   departs: {
-    Date: { type: Number,
-    default: function(){
-      return new Date().getFullYear
+    Date: { type: Date,
+    default: Date.now
     },
-    timestamps: true,
-    }
-  }
+  },
 })
 
 // Compile the schema into a model and export it
