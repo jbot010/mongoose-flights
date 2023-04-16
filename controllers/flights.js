@@ -20,7 +20,7 @@ function create(req, res){
 
 function index(req, res) {
   Flight.find({})
-  .then(flight => {
+  .then(flights => {
     console.log(flights);
     res.render('flights/index', {
       flights: flights,
