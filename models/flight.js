@@ -20,9 +20,12 @@ const flightSchema = new Schema({
   },
   departs: {
     Date: { type: Date,
-    default: Date.now
+    default: function(){
+      newDate => departDate.setFullYear(departDate.getFullYear()+1)
+      return newDate
+    }
     },
-  },
+  }, 
 })
 
 // Compile the schema into a model and export it
