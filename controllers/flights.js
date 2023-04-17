@@ -3,7 +3,6 @@ import { Flight } from "../models/flight.js"
 function index(req, res) {
   Flight.find({})
   .then(flights => {
-    console.log(flights);
     res.render('flights/index', {
       flights: flights,
       title: "All Flights",
@@ -62,7 +61,6 @@ function edit(req, res) {
   console.log("THIS WORKS")
   Flight.findById(req.params.flightId)
   .then(flight => {
-    console.log(flight)
     res.render('flights/edit', {
       flight,
       title: "Edit Flight"
@@ -75,13 +73,6 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  req.body.flightNo = !!req.body.flightNo
-  if(req.body.cast) {
-    req.body.cast = req.body.cast.split(", ")
-  }
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key]
-  }
   Flight.findByIdAndUpdate(req.params.flightId, req.body, { new: true })
   .then(flight => {
     // flight will be the NEWLY updated flight, instead of the old one
@@ -91,8 +82,6 @@ function update(req, res) {
     console.log(error)
     res.redirect('/flights')
   })
-  console.log(req.body)
-  console.log(req.params)
 }
 
 export {
