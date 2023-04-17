@@ -1,12 +1,14 @@
-<%- include('../partials/html-head') %>
+<%- include('../partials/html-head.ejs') %>
 <link rel="stylesheet" href="/stylesheets/flights/show.css" />
-<%- include('../partials/nav') %>
+<%- include('../partials/nav.ejs') %>
 
 <main>
-  <h1>Flights</h1>
+  <h1><%= title %></h1>
   <h2>Flight #<%= flight._id %></h2>
-  <h3><%= flight.text %></h3>
-  <a href="/flights">Go Back</a>
+  <h3><%= flight.flightNo %></h3>
+  <a href="/flight/ <%= flight._id %>/edit">
+    <button>Edit Flight</button>
+  </a>
 </main>
 
 <%- include("../partials/footer") %>

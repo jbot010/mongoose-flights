@@ -34,17 +34,16 @@ function create(req, res){
 }
 
 function show(req, res) {
-  console.log("THIS WORKS")
   Flight.findById(req.params.flightId)
   .then(flight => {
-    console.log(flight)
-    res.render('flights/show', {
-      flight,
-    })
+    res.render('flights/show', { 
+      title: 'Flight Detail', 
+      flight: flight,
+    })    
   })
-  .catch(error => {
-    console.log(error)
-    res.redirect('/flights')
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
   })
 }
 
@@ -59,10 +58,49 @@ function deleteFlight(req, res) {
   })
 }
 
+function edit(req, res) {
+  console.log("THIS WORKS")
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    console.log(flight)
+    res.render('flights/edit', {
+      flight,
+      title: "Edit Flight"
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/flights')
+  })
+}
+
+function update(req, res) {
+  req.body.flightNo = !!req.body.flightNo
+  if(req.body.cast) {
+    req.body.cast = req.body.cast.split(", ")
+  }
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
+  Flight.findByIdAndUpdate(req.params.flightId, req.body, { new: true })
+  .then(flight => {
+    // flight will be the NEWLY updated flight, instead of the old one
+    res.redirect(`/flights/${flight._id}`)
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/flights')
+  })
+  console.log(req.body)
+  console.log(req.params)
+}
+
 export {
   index,
   newFlight as new,
   create,
   show,
   deleteFlight as delete,
+  edit,
+  update,
 }

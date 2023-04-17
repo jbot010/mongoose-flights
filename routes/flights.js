@@ -3,20 +3,33 @@ import * as flightsCtrl from '../controllers/flights.js'
 
 const router = Router()
 
-//GET /flights/new
-router.get('/new', flightsCtrl.new)
-
-//POST /flights
-router.post('/', flightsCtrl.create)
+/// GET
 
 //GET /flights
 router.get('/', flightsCtrl.index)
 
+//GET /flights/new
+router.get('/new', flightsCtrl.new)
+
+// GET /flights/:flightId
+router.get('/:flightId', flightsCtrl.show)
+
+// GET /flights/:flightId/edit
+router.get('/:flightId/edit', flightsCtrl.edit)
+
+/// POST
+//POST /flights
+router.post('/', flightsCtrl.create)
+
+/// DELETE
+
 // DELETE /flights/:flightId
 router.delete('/:flightId', flightsCtrl.delete)
 
-// GET /flights/:flightId
-router.get('/:flightId', flightsCtrl.show) 
+/// PUT
+
+// PUT /flights/:flightId
+router.put('/:flightId', flightsCtrl.update)
 
 export { 
   router 

@@ -21,8 +21,7 @@ const flightSchema = new Schema({
   departs: {
     Date: { type: Date,
     default: function(){
-      newDate => departDate.setFullYear(departDate.getFullYear()+1)
-      return newDate
+      return new Date().getFullYear()
     }
     },
   }, 
