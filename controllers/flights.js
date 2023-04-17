@@ -27,19 +27,19 @@ function create(req, res){
     res.redirect('/flights')
     console.log(flight)
   })
-  .catch(err => {
-    console.log(err)
+  .catch(error => {
+    console.log(error)
     res.redirect('/flights/new')
   })
 }
 
 function show(req, res) {
-  console.log(req.params.flightId, 'in controller')
+  console.log("THIS WORKS")
   Flight.findById(req.params.flightId)
   .then(flight => {
     console.log(flight)
     res.render('flights/show', {
-      flight: flight
+      flight,
     })
   })
   .catch(error => {
