@@ -19,16 +19,19 @@ const flightSchema = new Schema({
     max: 9999,
   },
   departs: {
-    Date: { type: Date,
-    // default: function(){
-    //   return new Date().getFullYear()
-    // }
-    },
+    type: Date, 
+    default: function(){
+      const departDate = new Date()
+      departDate.setFullYear(departDate.getFullYear()+1)
+      return departDate
+    }  
   }, 
 })
 
 // Compile the schema into a model and export it
 const Flight = mongoose.model('Flight', flightSchema)
+
+
 
 export {
   Flight
