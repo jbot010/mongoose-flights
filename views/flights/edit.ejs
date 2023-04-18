@@ -11,22 +11,33 @@
   >
     <label for="airline-select">Airline:</label>
     <select name="airline" id="airline-select">
+      <option value="<%= flight.airline %>"><%= flight.airline %></option>
       <option value="American">American</option>
       <option value="Southwest">Southwest</option>
       <option value="United">United</option>
     </select>
     <label for="airport-select">Airport:</label>
     <select name="airport" id="airport-select">
+      <option value="<%= flight.airport %>"><%= flight.airport %></option>
       <option value="AUS">AUS</option>
       <option value="DFW">DFW</option>
-      <option value="DEN" selected>DEN</option>
+      <option value="DEN">DEN</option>
       <option value="LAX">LAX</option>
       <option value="SAN">SAN</option>
     </select>
     <label for="flightNo-input">Flight No:</label>
-    <input type="number" name="flightNo" id="flightNo-input" required>
+    <input 
+      type="number" 
+      name="flightNo" 
+      id="flightNo-input" 
+      value="<%= flight.flightNo %>" 
+      min="10" max="9999" required>
     <label for="depart-input">Departs:</label>
-    <input type="datetime-local" name="departs" id="departs-input">
+    <input 
+      type="datetime-local" 
+      name="departs" 
+      id="departs-input" 
+      value="<%= flight.departs.toISOString().slice(0, 16).replace('T', ' ') %>" required>
     <button type="submit">Edit Flight</button>
   </form>
 </main>

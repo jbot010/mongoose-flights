@@ -15,10 +15,15 @@
     <div><%= flight.departs %></div>
     <div>Tickets:</div>
     <% if (flight.tickets.length) { %>
-          <% flight.tickets.forEach(function(ticket) { %>
-          Seat:<%= ticket.seat %> Price $<%= ticket.price %>,
-          <% }) %>
-    <% } %>
+    <tbody>
+      <tr>
+      <% flight.tickets.forEach(function(ticket) { %>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.price %></td>
+        <% }) %>
+        <% } %>
+      </tr>
+  </tbody>
     <a href="/flights/<%= flight._id %>/edit">
       <button>Edit Flight</button>
     </a>
