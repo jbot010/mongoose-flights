@@ -18,8 +18,8 @@
     <tbody>
       <tr>
       <% flight.tickets.forEach(function(ticket) { %>
-        <td><%= ticket.seat %></td>
-        <td><%= ticket.price %></td>
+        <td>Seat: <%= ticket.seat %></td>
+        <td>$<%= ticket.price %></td>
         <% }) %>
         <% } %>
       </tr>

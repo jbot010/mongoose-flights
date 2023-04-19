@@ -37,7 +37,7 @@
       type="datetime-local" 
       name="departs" 
       id="departs-input" 
-      value="<%= flight.departs.toISOString().slice(0, 16).replace('T', ' ') %>" required>
+      value="<%= flight.departs.toISOString().slice(0, 16)%>" required>
     <button type="submit">Edit Flight</button>
   </form>
 </main>
