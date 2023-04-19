@@ -7,4 +7,6 @@ router.get('/new', mealsCtrl.new)
 
 router.post('/', mealsCtrl.create)
 
+router.delete('/:mealId', mealsCtrl.delete)
+
 export { router }
