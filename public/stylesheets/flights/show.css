@@ -31,26 +31,19 @@ section {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 16px;
+  width: 60%;
 }
 
 section div:nth-child(even) {
   font-weight: bold;
 }
 
-#add-review-form {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 16px;
-  margin-bottom: 20px;
+#ticket-section {
+  display: block;
+  margin-top: 20px;
 }
 
-#add-review-form > textarea {
-  width: 250px;
+#ticket-table, #add-ticket-form, #add-meal-to-flight {
+  margin-left: 95px;
 }
 
-#add-review-form > button {
-  font-size: 16px;
-  width: 160px;
-  grid-column: 2 / 3;
-  margin-bottom: 24px;
-}
